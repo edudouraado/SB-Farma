@@ -16,9 +16,9 @@ CODIFICACAO = 'latin-1'
 PASTA_RELATORIOS = "Relatórios de Inventário" # Pasta para salvar os arquivos Excel
 
 # DADOS DE CONEXÃO COM O BANCO DE DADOS (AJUSTE OBRIGATÓRIO SE FOR USAR O MYSQL!)
-DB_USER = 'seu_usuario'          # Ex: root
-DB_PASSWORD = 'sua_senha'        # Sua senha do MySQL
-DB_HOST = 'localhost'            # Endereço do seu servidor MySQL
+DB_USER = 'root'          # Ex: root
+DB_PASSWORD = '12345'        # Sua senha do MySQL
+DB_HOST = '127.0.0.1'            # Endereço do seu servidor MySQL
 DB_DATABASE = 'inventario_db'    # Nome do banco de dados (precisa existir)
 NOME_TABELA_MYSQL = 'inventario_mudancas' # Nome da tabela que o Python irá criar/alimentar
 
