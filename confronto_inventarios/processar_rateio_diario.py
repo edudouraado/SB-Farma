@@ -97,7 +97,7 @@ def processar_rateio_diario():
         print(f"Valor Diário Rateado (DEVE SER 123.07): R$ {perda_diaria_esperada:.4f}")
         
     except FileNotFoundError:
-        print(f"\n--- ERRO: Arquivo Não Encontrado ---")
+        print(f"\n--- ERRO: Arquivo Não Encontrado ---")    
         print(f"Certifique-se de que o arquivo '{file_name}' está no mesmo diretório do script.")
     except Exception as e:
         print(f"Ocorreu um erro durante o processamento: {e}")
