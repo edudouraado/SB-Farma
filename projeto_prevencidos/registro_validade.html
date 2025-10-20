@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário de Validade - SB FARMA</title>
+    <style>
+        /* CSS: Tema SB FARMA (Azul Escuro e Branco) e Estilo Profissional */
+        :root {
+            --cor-primaria: #004a8c; /* Azul Escuro - SB FARMA */
+            --cor-fundo: #f4f6f9;
+            --cor-card: #ffffff;
+            --cor-texto: #333333;
+            --cor-sucesso: #28a745;
+            --cor-foco: #ffc107; /* Amarelo para destaque de input */
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            background-color: var(--cor-card);
+            margin-bottom: 30px;
+        }
+
+        /* LOGO E HEADER */
+        header {
+            background-color: var(--cor-primaria);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+        .logo {
+            font-size: 2em;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+        
+        .form-section {
+            padding: 30px;
+        }
+
+        /* CAMPO DE CÓDIGO DE BARRAS (Foco Principal) */
+        .barcode-field {
+            margin-bottom: 35px;
+        }
+        .barcode-field input {
+            width: 100%;
+            padding: 25px 20px;
+            font-size: 1.8em;
+            text-align: center;
+            border: 4px solid var(--cor-primaria);
+            border-radius: 12px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-weight: 700;
+        }
+        .barcode-field input:focus {
+            border-color: var(--cor-foco);
+            box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.5);
+            outline: none;
+        }
+        
+        /* ESTILIZAÇÃO DOS CAMPOS SECUNDÁRIOS */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            color: #555;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1.1em;
+        }
+        
+        /* CAMPO AUTOPREENCHIDO (NOME DO PRODUTO) */
+        #product-name {
+            background-color: #f1f1f1;
+            font-weight: bold;
+            color: var(--cor-primaria);
+            cursor: default;
+        }
+
+        /* BOTÕES */
+        .btn-submit, .btn-export {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+        .btn-submit {
+            background-color: var(--cor-sucesso);
+            color: white;
+        }
+        .btn-submit:active {
+            transform: translateY(1px);
+        }
+        .btn-export {
+            background-color: var(--cor-primaria);
+            color: white;
+            margin-bottom: 20px;
+        }
+        .btn-export:hover:not(:disabled) {
+            background-color: #003a6e;
+        }
+        .btn-export:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        /* LISTA DE ITENS PENDENTES */
+        .pending-items {
+            border-top: 1px solid #eeeeee;
+            padding-top: 25px;
+        }
+        .item-list {
+            max-height: 250px;
+            overflow-y: auto;
+            list-style: none;
+            padding: 0;
+        }
+        .item-list li {
+            border-left: 5px solid var(--cor-primaria);
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item-list .data-val {
+            font-weight: 600;
+            color: #005691;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">SB FARMA</div>
+        <div class="subtitle">Registro Rápido de Validades</div>
+    </header>
+    
+    <form id="validity-form" class="form-section">
+        <div class="barcode-field">
+            <input type="text" id="barcode" placeholder="BIPAR CÓDIGO DE BARRAS" autofocus required autocomplete="off">
+        </div>
+        
+        <div class="form-group">
+            <label for="product-name">Produto (Busca no Sistema)</label>
+            <input type="text" id="product-name" value="Aguardando Leitura..." readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="lot">Lote</label>
+            <input type="text" id="lot" placeholder="Ex: 24B01A" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="quantity">Quantidade</label>
+            <input type="number" id="quantity" min="1" placeholder="Ex: 5" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="expiry-date">Data de Validade (Dia/Mês/Ano)</label>
+            <input type="date" id="expiry-date" required>
+        </div>
+
+        <button type="submit" class="btn-submit">
+            ADICIONAR ITEM À LISTA
+        </button>
+    </form>
+    
+    <div class="form-section pending-items">
+        <button id="export-btn" class="btn-export" disabled>
+            EXPORTAR TUDO PARA CSV (Excel)
+        </button>
+        
+        <h4>Itens na Lista (Prontos para Exportar)</h4>
+        <ul id="pending-list" class="item-list">
+            <li>Nenhum item adicionado ainda.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    // JS: Lógica para Conexão com a API (Backend Node.js)
+    
+    const ENDPOINT_BUSCA = 'http://localhost:3000/api/produto/'; // SEU ENDPOINT NODE.JS
+    
+    const barcodeInput = document.getElementById('barcode');
+    const productNameInput = document.getElementById('product-name');
+    const form = document.getElementById('validity-form');
+    const pendingList = document.getElementById('pending-list');
+    const exportBtn = document.getElementById('export-btn');
+    let pendingItemsData = [];
+    
+    // 1. FUNÇÃO DE BUSCA REAL (Conexão com a API Node.js/SQL)
+    async function lookupProduct(barcode) {
+        try {
+            productNameInput.value = 'Buscando no SQL...';
+            
+            // Faz a chamada GET para o endereço da sua API
+            const response = await fetch(ENDPOINT_BUSCA + barcode); 
+            
+            if (response.status === 404) {
+                 return 'Produto Não Encontrado';
+            }
+
+            const data = await response.json();
+            
+            // Retorna o nome do produto que veio do servidor (Node.js)
+            return data.nome || 'Produto Não Encontrado';
+            
+        } catch (error) {
+            console.error('Falha na comunicação com o servidor:', error);
+            // Se o Node.js não estiver rodando, essa mensagem será exibida
+            return 'Falha na Rede/Servidor Desligado'; 
+        }
+    }
+
+
+    // 2. AUTOMAÇÃO: Bipar Código de Barras e Buscar Produto
+    barcodeInput.addEventListener('change', async (e) => {
+        const scannedBarcode = e.target.value.trim();
+        if (scannedBarcode.length > 5) {
+            const productName = await lookupProduct(scannedBarcode);
+            productNameInput.value = productName;
+            
+            // Move o foco para o próximo campo (Lote) se o produto for válido
+            if (productName !== 'Produto Não Encontrado' && productName !== 'Falha na Rede/Servidor Desligado') {
+                document.getElementById('lot').focus();
+            }
+        }
+    });
+
+    // 3. AUTOMAÇÃO: Processar o Formulário (Adicionar Item)
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const barcode = barcodeInput.value.trim();
+        const productName = productNameInput.value;
+        const lot = document.getElementById('lot').value.trim();
+        const quantity = document.getElementById('quantity').value;
+        const expiryDate = document.getElementById('expiry-date').value;
+
+        if (productName === 'Aguardando Leitura...' || productName === 'Produto Não Encontrado' || productName === 'Falha na Rede/Servidor Desligado') {
+            alert('Por favor, bipar um código de barras válido primeiro.');
+            barcodeInput.focus();
+            return;
+        }
+
+        // Adiciona o item à lista de dados pendentes
+        const newItem = { 
+            codigo_barras: barcode, 
+            produto: productName, 
+            lote: lot, 
+            quantidade: quantity, 
+            validade: expiryDate 
+        };
+        pendingItemsData.push(newItem);
+
+        // Atualiza a visualização e o botão de exportar
+        renderPendingList();
+        
+        // 4. AUTOMAÇÃO: Limpa os campos e retorna o foco para o scanner (Fluxo de trabalho rápido)
+        document.getElementById('lot').value = '';
+        document.getElementById('quantity').value = '';
+        document.getElementById('expiry-date').value = '';
+        
+        productNameInput.value = 'Aguardando Leitura...';
+        barcodeInput.value = '';
+        barcodeInput.focus(); // Retorna o foco
+    });
+
+    function renderPendingList() {
+        if (pendingItemsData.length === 0) {
+            pendingList.innerHTML = '<li>Nenhum item adicionado ainda.</li>';
+            exportBtn.disabled = true;
+            return;
+        }
+
+        // Adiciona um item por linha
+        pendingList.innerHTML = pendingItemsData.map(item => `
+            <li>
+                <span class="item-description">${item.produto} (Qtd: ${item.quantidade})</span>
+                <span class="data-val">${item.lote} | ${formatDateForDisplay(item.validade)}</span>
+            </li>
+        `).join('');
+        
+        exportBtn.disabled = false;
+    }
+    
+    function formatDateForDisplay(dateString) {
+        if (!dateString) return 'S/D';
+        const [year, month, day] = dateString.split('-');
+        return `${day}/${month}/${year}`;
+    }
+
+    // 5. FUNCIONALIDADE: Exportar Dados para CSV (Excel)
+    exportBtn.addEventListener('click', () => {
+        if (pendingItemsData.length === 0) {
+            alert('Não há dados para exportar.');
+            return;
+        }
+        
+        const headers = ['codigo_barras', 'produto', 'lote', 'quantidade', 'validade'];
+        let csv = headers.join(';') + '\n';
+
+        pendingItemsData.forEach(item => {
+            const formattedDate = formatDateForDisplay(item.validade);
+            
+            const values = [
+                item.codigo_barras, 
+                item.produto.replace(/;/g, ','), 
+                item.lote, 
+                item.quantidade, 
+                formattedDate 
+            ];
+            csv += values.join(';') + '\n';
+        });
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.setAttribute('download', `inventario_vencimento_SB_FARMA_${new Date().toISOString().slice(0, 10)}.csv`);
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        alert(`Sucesso! ${pendingItemsData.length} itens exportados para CSV.`);
+    });
+
+    // Inicializa a lista
+    renderPendingList();
+</script>
+</body>
+</html>
