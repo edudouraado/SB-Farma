@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Eduardo Dourado</title>
+    <style>
+        /* --- Configurações Gerais --- */
+        :root {
+            --primary-color: #2c3e50; /* Azul Executivo */
+            --accent-color: #34495e;
+            --text-color: #2a2a2a;
+            --gray-meta: #666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
+            background-color: #525659; /* Fundo cinza apenas para visualização na tela */
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm; /* Tamanho exato A4 */
+            padding: 18mm 22mm; /* Margens equilibradas */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            color: var(--text-color);
+            line-height: 1.5; /* Espaçamento de leitura confortável (Ocupa mais espaço) */
+        }
+
+        /* --- Cabeçalho --- */
+        header {
+            text-align: center;
+            margin-bottom: 25px; /* Mais espaço após o cabeçalho */
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 22pt;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 11pt;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            font-size: 10pt;
+            color: var(--gray-meta);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px; /* Mais espaço entre os contatos */
+        }
+
+        .contact-info a { color: var(--gray-meta); text-decoration: none; border-bottom: 1px dotted #ccc; }
+
+        /* --- Títulos das Seções --- */
+        section { 
+            margin-bottom: 22px; /* Aumentado para espaçar as seções verticalmente */
+        }
+
+        h2 {
+            font-size: 12.5pt;
+            color: var(--primary-color);
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Conteúdo dos Blocos --- */
+        .block {
+            margin-bottom: 12px;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .title-main { 
+            font-weight: 700; 
+            font-size: 11pt; 
+            color: #000; 
+        }
+        
+        .title-meta { 
+            font-style: italic; 
+            font-size: 9.5pt; 
+            color: var(--gray-meta); 
+        }
+        
+        .role-sub {
+            font-weight: 600;
+            font-style: italic;
+            font-size: 10.5pt;
+            color: var(--accent-color);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        p {
+            font-size: 10.5pt;
+            margin-bottom: 8px;
+            text-align: justify;
+            color: #444;
+        }
+
+        /* --- Listas e Bullets --- */
+        ul {
+            list-style-type: square;
+            margin-left: 18px;
+            margin-bottom: 8px;
+        }
+
+        li {
+            font-size: 10.5pt;
+            margin-bottom: 5px; /* Mais respiro entre cada linha da lista */
+            color: #333;
+        }
+
+        /* --- Grid de Skills (Ajustado) --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 10px;
+        }
+        
+        .skill-group h3 {
+            font-size: 11pt;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 2px;
+        }
+
+        .skill-list li {
+            margin-bottom: 4px;
+        }
+
+        /* --- Ajustes para Impressão --- */
+        @media print {
+            body { background: none; padding: 0; }
+            .page { box-shadow: none; width: 100%; margin: 0; padding: 18mm 20mm; }
+            a { text-decoration: none; color: #333; border: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <h1>Eduardo Dourado</h1>
+            <div class="subtitle">Estudante e Desenvolvedor Júnior | Análise de Dados & Automação</div>
+            <div class="contact-info">
+                <span>📍 Fortaleza, CE</span>
+                <span>📞 (61) 9 8343-9617</span>
+                <span>📧 edusalesoliveira@hotmail.com</span>
+                <span>🔗 <a href="https://www.linkedin.com/in/eduardodouradosdo/">LinkedIn</a></span>
+                <span>🐙 <a href="https://github.com/edudouraado">GitHub</a></span>
+            </div>
+        </header>
+
+        <section>
+            <h2>Resumo Profissional</h2>
+            <p>
+                Bacharel em Direito e estudante de Análise e Desenvolvimento de Sistemas (ADS) na UNIFOR. Combino capacidade analítica jurídica com lógica de programação para criar soluções tecnológicas eficientes. Atualmente, foco no desenvolvimento de automações em <strong>Python</strong> para resolver problemas reais de negócio, como a auditoria de inventários e tratamento de dados corporativos. Busco oportunidade como Desenvolvedor Júnior ou Analista de Dados.
+            </p>
+        </section>
+
+        <section>
+            <h2>Experiência Profissional</h2>
+            
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">SBFarma</span>
+                    <span class="title-meta">Fortaleza, CE</span>
+                </div>
+                <div class="header-row">
+                    <span class="role-sub">Assistente (Foco em Automação de Inventários e Dados)</span>
+                    <span class="title-meta">Março 2024 – Atualmente</span>
+                </div>
+                <ul>
+                    <li><strong>Automação de Inventários (Python):</strong> Desenvolvimento de algoritmos ETL que leem relatórios do sistema e comparam com a contagem física, reduzindo drasticamente o tempo de auditoria e eliminando erros manuais.</li>
+                    <li><strong>Prevenção de Perdas Baseada em Dados:</strong> Criação de dashboards e alertas automáticos para produtos próximos ao vencimento e rupturas de estoque, utilizando Excel Avançado e SQL.</li>
+                    <li><strong>Eficiência Operacional:</strong> Transformação de processos de conferência manuais em fluxos digitais automatizados, garantindo alta acuracidade nas informações fiscais.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Portfólio & Projetos de Desenvolvimento</h2>
+            
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">Pipeline de Automação de Dados (Python/Pandas)</span>
+                    <span class="title-meta">Aplicação Corporativa</span>
+                </div>
+                <ul>
+                    <li>Desenvolvimento de scripts para processar grandes volumes de dados de estoque, cruzando sistema vs. físico.</li>
+                    <li>Automatização completa de envio de e-mails e relatórios de auditoria, eliminando horas de trabalho manual diário.</li>
+                </ul>
+            </div>
+
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">Sistema de Gestão de Veículos (Full Stack)</span>
+                    <span class="title-meta">Projeto Acadêmico</span>
+                </div>
+                <ul>
+                    <li>Aplicação web completa com arquitetura MVC. Backend em <strong>Flask (Python)</strong> e Frontend HTML/CSS/JS.</li>
+                    <li>Implementação de API RESTful, controle de rotas e persistência de dados. Deploy realizado (Render/Vercel).</li>
+                </ul>
+            </div>
+
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">Projeto OPENEST (Front-end)</span>
+                    <span class="title-meta">Projeto Acadêmico</span>
+                </div>
+                <ul>
+                    <li>Desenvolvimento de interfaces focadas em UX/UI e lógica de programação em JavaScript (Client-side).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Formação Acadêmica</h2>
+            
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">Análise e Desenvolvimento de Sistemas (ADS)</span>
+                    <span class="title-meta">Cursando</span>
+                </div>
+                <div class="role-sub" style="font-weight: normal; margin-bottom: 8px;">UNIFOR - Universidade de Fortaleza</div>
+            </div>
+
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">Bacharelado em Direito</span>
+                    <span class="title-meta">Concluído</span>
+                </div>
+                <div class="role-sub" style="font-weight: normal;">UniCEUB - Centro Universitário de Brasília</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Competências Técnicas & Soft Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3>Tech Stack</h3>
+                    <ul class="skill-list">
+                        <li><strong>Linguagens:</strong> Python (Backend/Dados), JavaScript, Java, SQL.</li>
+                        <li><strong>Libs & Frameworks:</strong> Pandas, Flask, Bootstrap.</li>
+                        <li><strong>Ferramentas:</strong> Git/GitHub, VS Code, Excel (VBA).</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Habilidades Comportamentais</h3>
+                    <ul class="skill-list">
+                        <li><strong>Visão de Negócio:</strong> Tradução de dores reais em código.</li>
+                        <li><strong>Comunicação:</strong> Escrita técnica clara (Jurídico).</li>
+                        <li><strong>Autodidata:</strong> Aprendizado rápido de tecnologias.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
