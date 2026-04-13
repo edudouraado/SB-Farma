@@ -3,44 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo - Eduardo Dourado</title>
+    <title>Currículo - Eduardo Dourado (Estágio)</title>
     <style>
-        /* --- Configurações Gerais --- */
+        /* Configurações Gerais e Clean */
         :root {
-            --primary-color: #2c3e50; /* Azul Executivo */
-            --accent-color: #34495e;
-            --text-color: #2a2a2a;
-            --gray-meta: #666;
+            --primary-color: #1a365d;
+            --accent-color: #2b6cb0;
+            --text-color: #2d3748;
+            --gray-meta: #718096;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
-            background-color: #525659; /* Fundo cinza apenas para visualização na tela */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e2e8f0;
             display: flex;
             justify-content: center;
-            padding: 30px;
+            padding: 20px;
         }
 
         .page {
             background: white;
             width: 210mm;
-            min-height: 297mm; /* Tamanho exato A4 */
-            padding: 18mm 22mm; /* Margens equilibradas */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            min-height: 297mm; /* A4 */
+            padding: 18mm 22mm;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             color: var(--text-color);
-            line-height: 1.5; /* Espaçamento de leitura confortável (Ocupa mais espaço) */
+            line-height: 1.5;
         }
 
-        /* --- Cabeçalho --- */
+        /* Cabeçalho */
         header {
             text-align: center;
-            margin-bottom: 25px; /* Mais espaço após o cabeçalho */
+            margin-bottom: 20px;
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 15px;
         }
@@ -48,16 +44,16 @@
         h1 {
             color: var(--primary-color);
             text-transform: uppercase;
-            font-size: 22pt;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
+            font-size: 24pt;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
             font-weight: 800;
         }
 
         .subtitle {
-            font-size: 11pt;
+            font-size: 11.5pt;
             color: var(--accent-color);
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 10px;
             text-transform: uppercase;
         }
@@ -68,31 +64,26 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px; /* Mais espaço entre os contatos */
+            gap: 15px;
         }
 
-        .contact-info a { color: var(--gray-meta); text-decoration: none; border-bottom: 1px dotted #ccc; }
+        .contact-info a { color: var(--gray-meta); text-decoration: none; border-bottom: 1px dotted #cbd5e0; }
 
-        /* --- Títulos das Seções --- */
-        section { 
-            margin-bottom: 22px; /* Aumentado para espaçar as seções verticalmente */
-        }
+        /* Seções */
+        section { margin-bottom: 20px; }
 
         h2 {
             font-size: 12.5pt;
             color: var(--primary-color);
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid #e2e8f0;
             padding-bottom: 4px;
             margin-bottom: 12px;
             text-transform: uppercase;
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
-        /* --- Conteúdo dos Blocos --- */
-        .block {
-            margin-bottom: 12px;
-        }
+        /* Blocos */
+        .block { margin-bottom: 14px; }
 
         .header-row {
             display: flex;
@@ -101,24 +92,14 @@
             margin-bottom: 2px;
         }
 
-        .title-main { 
-            font-weight: 700; 
-            font-size: 11pt; 
-            color: #000; 
-        }
-        
-        .title-meta { 
-            font-style: italic; 
-            font-size: 9.5pt; 
-            color: var(--gray-meta); 
-        }
-        
+        .title-main { font-weight: 700; font-size: 11pt; color: #1a202c; }
+        .title-meta { font-style: italic; font-size: 9.5pt; color: var(--gray-meta); }
         .role-sub {
             font-weight: 600;
             font-style: italic;
             font-size: 10.5pt;
             color: var(--accent-color);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             display: block;
         }
 
@@ -126,47 +107,33 @@
             font-size: 10.5pt;
             margin-bottom: 8px;
             text-align: justify;
-            color: #444;
+            color: #4a5568;
         }
 
-        /* --- Listas e Bullets --- */
-        ul {
-            list-style-type: square;
-            margin-left: 18px;
-            margin-bottom: 8px;
-        }
+        ul { list-style-type: square; margin-left: 18px; margin-bottom: 8px; }
+        li { font-size: 10.5pt; margin-bottom: 4px; color: #2d3748; }
 
-        li {
-            font-size: 10.5pt;
-            margin-bottom: 5px; /* Mais respiro entre cada linha da lista */
-            color: #333;
-        }
-
-        /* --- Grid de Skills (Ajustado) --- */
+        /* Destaques (Skills) */
         .skills-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 10px;
+            grid-template-columns: 1fr;
+            gap: 10px;
         }
         
-        .skill-group h3 {
-            font-size: 11pt;
-            color: var(--accent-color);
+        .skill-item {
+            background-color: #f7fafc;
+            padding: 10px 15px;
+            border-left: 3px solid var(--accent-color);
             margin-bottom: 8px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 2px;
         }
 
-        .skill-list li {
-            margin-bottom: 4px;
-        }
+        .skill-item strong { color: var(--primary-color); }
 
-        /* --- Ajustes para Impressão --- */
+        /* Impressão */
         @media print {
             body { background: none; padding: 0; }
-            .page { box-shadow: none; width: 100%; margin: 0; padding: 18mm 20mm; }
-            a { text-decoration: none; color: #333; border: none; }
+            .page { box-shadow: none; width: 100%; margin: 0; padding: 15mm 20mm; }
+            a { text-decoration: none; color: #1a202c; border: none; }
         }
     </style>
 </head>
@@ -175,7 +142,7 @@
     <div class="page">
         <header>
             <h1>Eduardo Dourado</h1>
-            <div class="subtitle">Estudante e Desenvolvedor Júnior | Análise de Dados & Automação</div>
+            <div class="subtitle">Estudante de ADS | Buscando Estágio em Desenvolvimento</div>
             <div class="contact-info">
                 <span>📍 Fortaleza, CE</span>
                 <span>📞 (61) 9 8343-9617</span>
@@ -186,10 +153,72 @@
         </header>
 
         <section>
-            <h2>Resumo Profissional</h2>
+            <h2>Objetivo & Resumo</h2>
             <p>
-                Bacharel em Direito e estudante de Análise e Desenvolvimento de Sistemas (ADS) na UNIFOR. Combino capacidade analítica jurídica com lógica de programação para criar soluções tecnológicas eficientes. Atualmente, foco no desenvolvimento de automações em <strong>Python</strong> para resolver problemas reais de negócio, como a auditoria de inventários e tratamento de dados corporativos. Busco oportunidade como Desenvolvedor Júnior ou Analista de Dados.
+                Estudante de Análise e Desenvolvimento de Sistemas (ADS) em busca de oportunidade de <strong>Estágio em Desenvolvimento de Software / Dados</strong>. Possuo base sólida em Lógica de Programação, <strong>Programação Orientada a Objetos (POO)</strong> e modelagem de banco de dados (<strong>SQL</strong>). Transicionando do Direito para a TI, já aplico meus conhecimentos no meu trabalho atual criando scripts (Python) que envolvem <strong>validação rigorosa de dados</strong> e automação de tarefas repetitivas. Procuro um ambiente onde eu possa aprender, evoluir tecnicamente e contribuir com minha facilidade de resolução de problemas.
             </p>
+        </section>
+
+        <section>
+            <h2>Formação Acadêmica</h2>
+            
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">Análise e Desenvolvimento de Sistemas (ADS)</span>
+                    <span class="title-meta">Cursando</span>
+                </div>
+                <div class="role-sub" style="font-weight: normal; color: #4a5568;">UNIFOR - Universidade de Fortaleza</div>
+            </div>
+
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">Bacharelado em Direito</span>
+                    <span class="title-meta">Concluído</span>
+                </div>
+                <div class="role-sub" style="font-weight: normal; color: #4a5568;">UniCEUB - Centro Universitário de Brasília</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Fundamentos & Tecnologias</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <strong>Lógica & POO:</strong> Domínio de estruturas de controle, <strong>laços de repetição (loops)</strong>, <strong>validação de inputs/dados</strong> e conceitos de Programação Orientada a Objetos (Classes, Herança, Encapsulamento) aplicados em Python e Java.
+                </div>
+                <div class="skill-item">
+                    <strong>Banco de Dados (SQL):</strong> Conhecimento prático em DDL e DML. Criação de tabelas, relacionamentos (Foreign Keys) e consultas utilizando <strong>SELECT, JOINs, WHERE</strong> e agrupamentos para extração e validação de informações.
+                </div>
+                <div class="skill-item">
+                    <strong>Ferramentas & Outros:</strong> Git/GitHub para versionamento, familiaridade com frameworks Web (Flask), e Excel Avançado (cruzamento de dados).
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projetos Práticos</h2>
+            
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">Sistema de Gestão (POO & SQL)</span>
+                    <span class="title-meta">Projeto Acadêmico</span>
+                </div>
+                <ul>
+                    <li>Desenvolvimento de sistema estruturado em <strong>Orientação a Objetos (POO)</strong> utilizando Python.</li>
+                    <li>Implementação de regras de negócio com <strong>validação de dados</strong> no cadastro de entidades.</li>
+                    <li>Integração com banco de dados relacional para operações de CRUD (Create, Read, Update, Delete) via SQL.</li>
+                </ul>
+            </div>
+
+            <div class="block">
+                <div class="header-row">
+                    <span class="title-main">Pipeline de Validação de Dados Corporativos</span>
+                    <span class="title-meta">Aplicação Prática</span>
+                </div>
+                <ul>
+                    <li>Desenvolvimento de scripts utilizando pesadamente <strong>estruturas de repetição</strong> para percorrer e ler milhares de linhas de arquivos gerados pelo sistema ERP.</li>
+                    <li>Aplicação de lógica para <strong>validar inconsistências</strong> entre o estoque físico e o banco de dados da empresa, gerando relatórios precisos.</li>
+                </ul>
+            </div>
         </section>
 
         <section>
@@ -201,92 +230,14 @@
                     <span class="title-meta">Fortaleza, CE</span>
                 </div>
                 <div class="header-row">
-                    <span class="role-sub">Assistente (Foco em Automação de Inventários e Dados)</span>
+                    <span class="role-sub">Assistente (Foco em Análise de Dados e Automação)</span>
                     <span class="title-meta">Março 2024 – Atualmente</span>
                 </div>
                 <ul>
-                    <li><strong>Automação de Inventários (Python):</strong> Desenvolvimento de algoritmos ETL que leem relatórios do sistema e comparam com a contagem física, reduzindo drasticamente o tempo de auditoria e eliminando erros manuais.</li>
-                    <li><strong>Prevenção de Perdas Baseada em Dados:</strong> Criação de dashboards e alertas automáticos para produtos próximos ao vencimento e rupturas de estoque, utilizando Excel Avançado e SQL.</li>
-                    <li><strong>Eficiência Operacional:</strong> Transformação de processos de conferência manuais em fluxos digitais automatizados, garantindo alta acuracidade nas informações fiscais.</li>
+                    <li>Aplicação prática de lógica de programação no dia a dia corporativo, desenvolvendo rotinas que automatizam processos de inventário.</li>
+                    <li>Responsável por extrair, tratar e <strong>validar dados</strong> de estoque, substituindo conferências manuais sujeitas a erros por rotinas de código.</li>
+                    <li>Experiência comprovada em entender um problema de negócio e traduzi-lo para uma solução tecnológica, habilidade essencial para atuar em equipes de desenvolvimento.</li>
                 </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>Portfólio & Projetos de Desenvolvimento</h2>
-            
-            <div class="block">
-                <div class="header-row">
-                    <span class="title-main">Pipeline de Automação de Dados (Python/Pandas)</span>
-                    <span class="title-meta">Aplicação Corporativa</span>
-                </div>
-                <ul>
-                    <li>Desenvolvimento de scripts para processar grandes volumes de dados de estoque, cruzando sistema vs. físico.</li>
-                    <li>Automatização completa de envio de e-mails e relatórios de auditoria, eliminando horas de trabalho manual diário.</li>
-                </ul>
-            </div>
-
-            <div class="block">
-                <div class="header-row">
-                    <span class="title-main">Sistema de Gestão de Veículos (Full Stack)</span>
-                    <span class="title-meta">Projeto Acadêmico</span>
-                </div>
-                <ul>
-                    <li>Aplicação web completa com arquitetura MVC. Backend em <strong>Flask (Python)</strong> e Frontend HTML/CSS/JS.</li>
-                    <li>Implementação de API RESTful, controle de rotas e persistência de dados. Deploy realizado (Render/Vercel).</li>
-                </ul>
-            </div>
-
-            <div class="block">
-                <div class="header-row">
-                    <span class="title-main">Projeto OPENEST (Front-end)</span>
-                    <span class="title-meta">Projeto Acadêmico</span>
-                </div>
-                <ul>
-                    <li>Desenvolvimento de interfaces focadas em UX/UI e lógica de programação em JavaScript (Client-side).</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>Formação Acadêmica</h2>
-            
-            <div class="block">
-                <div class="header-row">
-                    <span class="title-main">Análise e Desenvolvimento de Sistemas (ADS)</span>
-                    <span class="title-meta">Cursando</span>
-                </div>
-                <div class="role-sub" style="font-weight: normal; margin-bottom: 8px;">UNIFOR - Universidade de Fortaleza</div>
-            </div>
-
-            <div class="block">
-                <div class="header-row">
-                    <span class="title-main">Bacharelado em Direito</span>
-                    <span class="title-meta">Concluído</span>
-                </div>
-                <div class="role-sub" style="font-weight: normal;">UniCEUB - Centro Universitário de Brasília</div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Competências Técnicas & Soft Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <h3>Tech Stack</h3>
-                    <ul class="skill-list">
-                        <li><strong>Linguagens:</strong> Python (Backend/Dados), JavaScript, Java, SQL.</li>
-                        <li><strong>Libs & Frameworks:</strong> Pandas, Flask, Bootstrap.</li>
-                        <li><strong>Ferramentas:</strong> Git/GitHub, VS Code, Excel (VBA).</li>
-                    </ul>
-                </div>
-                <div class="skill-group">
-                    <h3>Habilidades Comportamentais</h3>
-                    <ul class="skill-list">
-                        <li><strong>Visão de Negócio:</strong> Tradução de dores reais em código.</li>
-                        <li><strong>Comunicação:</strong> Escrita técnica clara (Jurídico).</li>
-                        <li><strong>Autodidata:</strong> Aprendizado rápido de tecnologias.</li>
-                    </ul>
-                </div>
             </div>
         </section>
 
